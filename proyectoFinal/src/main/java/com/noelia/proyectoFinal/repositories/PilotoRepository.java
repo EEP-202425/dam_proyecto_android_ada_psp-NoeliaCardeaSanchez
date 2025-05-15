@@ -7,6 +7,5 @@ import com.noelia.proyectoFinal.entitys.Piloto;
 
 @Repository
 public interface PilotoRepository extends JpaRepository<Piloto, Long> {
-
-    
+	Piloto findByNombre(String nombre);
 }

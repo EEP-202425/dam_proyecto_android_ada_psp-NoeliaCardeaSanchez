@@ -11,7 +11,6 @@ import com.noelia.proyectoFinal.entitys.Avion;
 public interface AvionRepository extends JpaRepository<Avion, Long> {
 
     // Buscar todos los aviones disponibles
-    List<Avion> findByDisponibleTrue();
 
 	
 }
