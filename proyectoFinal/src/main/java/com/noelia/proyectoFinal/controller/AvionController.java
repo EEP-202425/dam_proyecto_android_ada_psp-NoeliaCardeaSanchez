@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,30 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.noelia.proyectoFinal.entitys.Avion;
+import com.noelia.proyectoFinal.entitys.Piloto;
+import com.noelia.proyectoFinal.repositories.PilotoRepository;
 import com.noelia.proyectoFinal.service.AvionService;
+import com.noelia.proyectoFinal.service.PilotoService;
 
 @RestController
 @RequestMapping("/api/aviones")
 @CrossOrigin(origins = "*") // Permite peticiones desde otras apps (como Android)
 public class AvionController {
 
+	private final PilotoService pilotoService;
     private final AvionService avionService;
 
     @Autowired
-    public AvionController(AvionService avionService) {
+    public AvionController(AvionService avionService,  PilotoService pilotoService) {
         this.avionService = avionService;
+        this.pilotoService = pilotoService;
     }
 
     // Obtener todos los aviones
     @GetMapping
     public List<Avion> obtenerTodos() {
         return avionService.obtenerTodos();
-    }
-
-    // Obtener aviones disponibles
-    @GetMapping("/disponibles")
-    public List<Avion> obtenerDisponibles() {
-        return avionService.obtenerDisponibles();
     }
 
     // Obtener un avión por ID
@@ -49,7 +49,12 @@ public class AvionController {
     // Crear o editar un avión
     @PostMapping
     public Avion guardar(@RequestBody Avion avion) {
-        return avionService.guardar(avion);
+    	
+    	Piloto p = pilotoService.buscarPorNombre(avion.getPiloto().getNombre());
+   
+    	Avion avionNuevo = new Avion(null, avion.getNombre(), avion.getMatricula(), avion.getModelo(), p);
+    	
+        return avionService.guardar(avionNuevo);
     }
 
     // Eliminar un avión por ID
