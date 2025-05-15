@@ -30,6 +30,10 @@ public class Cliente {
     @Column(name = "contrasena")
     private String contrasena;
     
+    public Cliente() {
+    	
+    }
+    
     public Cliente(Long id, String nombre, String email, String telefono, String contrasena) {
 		super();
 		this.id = id;

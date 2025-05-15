@@ -45,6 +45,10 @@ public class Reserva {
     @Column(name = "estado")
     private String estado; // reservado, completado, cancelado
     
+	public Reserva() {
+    	
+    }
+    
     public Reserva(Long id, Avion avion, Piloto piloto, Cliente cliente, Date fechaSalida, String destino,
 			String estado) {
 		super();
