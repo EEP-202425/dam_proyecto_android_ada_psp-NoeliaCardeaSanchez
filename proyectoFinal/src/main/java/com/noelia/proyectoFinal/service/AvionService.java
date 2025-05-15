@@ -24,10 +24,6 @@ public class AvionService {
         return avionRepository.findAll();
     }
 
-    // Obtener solo los aviones disponibles
-    public List<Avion> obtenerDisponibles() {
-        return avionRepository.findByDisponibleTrue();
-    }
 
     // Buscar avión por ID
     public Optional<Avion> obtenerPorId(Long id) {

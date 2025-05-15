@@ -34,4 +34,8 @@ public class PilotoService {
     public void eliminar(Long id) {
         pilotoRepository.deleteById(id);
     }
+    
+    public Piloto buscarPorNombre(String nombre) {
+    	return pilotoRepository.findByNombre(nombre);
+    }
 }
