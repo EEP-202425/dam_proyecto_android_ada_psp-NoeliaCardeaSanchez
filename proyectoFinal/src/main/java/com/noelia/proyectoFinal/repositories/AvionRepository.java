@@ -8,7 +8,4 @@ import com.noelia.proyectoFinal.entitys.Avion;
 @Repository
 public interface AvionRepository extends JpaRepository<Avion, Long> {
 
-    // Buscar todos los aviones disponibles
-
-	
 }
