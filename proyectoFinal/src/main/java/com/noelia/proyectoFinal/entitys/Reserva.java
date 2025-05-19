@@ -1,17 +1,15 @@
 package com.noelia.proyectoFinal.entitys;
 
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 
 
 @Entity
@@ -35,28 +33,23 @@ public class Reserva {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "fecha_salida")
-    private Date fechaSalida;
-
     @Column(name = "destino")
     private String destino;
-
-    @Column(name = "estado")
-    private String estado; // reservado, completado, cancelado
     
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    private EstadoReserva estado;
+ 
 	public Reserva() {
     	
     }
     
-    public Reserva(Long id, Avion avion, Piloto piloto, Cliente cliente, Date fechaSalida, String destino,
-			String estado) {
+    public Reserva(Long id, Avion avion, Piloto piloto, Cliente cliente, String destino, EstadoReserva estado) {
 		super();
 		this.id = id;
 		this.avion = avion;
 		this.piloto = piloto;
 		this.cliente = cliente;
-		this.fechaSalida = fechaSalida;
 		this.destino = destino;
 		this.estado = estado;
 	}
@@ -93,14 +86,7 @@ public class Reserva {
 		this.cliente = cliente;
 	}
 
-	public Date getFechaSalida() {
-		return fechaSalida;
-	}
-
-	public void setFechaSalida(Date fechaSalida) {
-		this.fechaSalida = fechaSalida;
-	}
-
+	
 	public String getDestino() {
 		return destino;
 	}
@@ -108,18 +94,18 @@ public class Reserva {
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
+	
+	public EstadoReserva getEstado() {
+        return estado;
+    }
+    public void setEstado(EstadoReserva estado) {
+        this.estado = estado;
+    }
 
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", avion=" + avion + ", piloto=" + piloto + ", cliente=" + cliente
-				+ ", fechaSalida=" + fechaSalida + ", destino=" + destino + ", estado=" + estado + "]";
+				+ ", destino=" + destino + "]";
 	}
 }
