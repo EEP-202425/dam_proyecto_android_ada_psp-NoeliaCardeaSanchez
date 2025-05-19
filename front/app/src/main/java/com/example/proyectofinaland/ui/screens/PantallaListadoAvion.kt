@@ -21,14 +21,14 @@ import com.example.proyectofinaland.dto.ResponseAvion
 import com.example.proyectofinaland.model.Avion
 import kotlinx.coroutines.delay
 
-// ——— 1. Estados de la UI ——————————————————————————————
+//Estados de la UI
 sealed class AvionUiState {
     object Loading                 : AvionUiState()
     data class Success(val aviones: List<Avion>) : AvionUiState()
     data class Created(val avion: Avion)         : AvionUiState()
 }
 
-// ——— 2. Pantalla principal que despacha según el estado —————
+// Pantalla principal que despacha según el estado
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AvionScreen(
@@ -72,7 +72,7 @@ fun AvionScreen(
     }
 }
 
-// ——— 3. Formulario para crear un avión ————————————————
+// Formulario para crear un avión
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaAnadirAvion(
@@ -144,7 +144,7 @@ fun PantallaAnadirAvion(
     }
 }
 
-// ——— 4. Lista de aviones ——————————————————————————————
+//Lista de aviones
 @Composable
 fun ShowAviones(
     aviones:     List<Avion>,
@@ -183,7 +183,7 @@ fun ShowAviones(
     }
 }
 
-// ——— 5. Pantalla de “avión creado” ——————————————————————
+//Pantalla de “avión creado”
 @Composable
 fun CreatedScreenAvion(
     avion:    Avion,

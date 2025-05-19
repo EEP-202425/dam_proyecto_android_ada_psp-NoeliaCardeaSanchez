@@ -71,9 +71,9 @@ dependencies {
 
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
-    // Para LiveData–Compose interop (observeAsState)
+    //LiveData–Compose interop (observeAsState)
     implementation ("androidx.compose.runtime:runtime-livedata:1.5.0")
-// Si usas Material3
+    //Material3
     implementation ("androidx.compose.material3:material3:1.1.0")
 
     // Jetpack Compose

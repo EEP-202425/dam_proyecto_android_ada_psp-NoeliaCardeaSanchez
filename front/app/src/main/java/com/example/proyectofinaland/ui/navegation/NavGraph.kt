@@ -27,7 +27,7 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
         startDestination = Screen.Listado.route,
         modifier         = modifier
     ) {
-        // ─────── Ruta de listado ───────
+        // Ruta de listado
         composable(Screen.Listado.route) {
             Scaffold(
                 topBar = { TopAppBar(title = { Text("Listado de aviones") }) },
@@ -39,7 +39,7 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
             ) { padding ->
                 ShowAviones(
                     aviones     = aviones,
-                    onItemClick = { /*detalle si quieres*/ },
+                    onItemClick = { /*posible detalle*/ },
                     onRefresh   = { vm.cargarAviones() },
                     modifier    = Modifier
                         .fillMaxSize()
@@ -48,7 +48,7 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
             }
         }
 
-        // ─────── Ruta de creación ───────
+        // Ruta de creación
         composable(Screen.Anadir.route) {
             PantallaAnadirAvion(
                 navController = navController,
