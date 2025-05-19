@@ -7,7 +7,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.proyectofinaland.model.Avion
+import com.example.proyectofinaland.dto.ResponseAvion
 import com.example.proyectofinaland.viewmodel.AvionViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,14 +50,14 @@ fun PantallaAnadirAvion(
                 isError = matricula.isBlank()
             )
 
+
             errorMsg?.let { Text(it, color = MaterialTheme.colorScheme.error) }
 
             Spacer(Modifier.weight(1f))
 
             Button(
                 onClick = {
-                    val nuevo = Avion(
-                        id        = 0,
+                    val nuevo = ResponseAvion(
                         nombre    = nombre.trim(),
                         modelo    = modelo.trim(),
                         matricula = matricula.trim()

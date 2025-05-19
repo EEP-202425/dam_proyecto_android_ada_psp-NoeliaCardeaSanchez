@@ -25,11 +25,6 @@ public class Avion {
     @Column(name = "nombre")
     private String nombre;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "piloto_id")
-    @JsonIgnore
-    private Piloto piloto;
-
     @Column(name = "modelo")
     private String modelo;
 
@@ -40,11 +35,11 @@ public class Avion {
     	
     }
     
-    public Avion(Long id, String nombre, String modelo, String matricula,  Piloto piloto) {
+    public Avion(Long id, String nombre, String modelo, String matricula) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.piloto = piloto;
+
 		this.modelo = modelo;
 		this.matricula = matricula;
 	}
@@ -82,13 +77,6 @@ public class Avion {
 		this.matricula = matricula;
 	}
 	
-	public Piloto getPiloto() {
-		return piloto;
-	}
-
-	public void setPiloto(Piloto piloto) {
-		this.piloto = piloto;
-	}
 
 	@Override
 	public String toString() {

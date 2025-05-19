@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.proyectofinaland.dto.ResponseAvion
 import com.example.proyectofinaland.model.Avion
 import kotlinx.coroutines.delay
 
@@ -76,12 +77,13 @@ fun AvionScreen(
 @Composable
 fun PantallaAnadirAvion(
     navController:       NavHostController,
-    onCreateAvion:       (Avion) -> Unit,
+    onCreateAvion: (ResponseAvion) -> Unit,
     modifier:            Modifier = Modifier
 ) {
     var nombre    by rememberSaveable { mutableStateOf("") }
     var modelo    by rememberSaveable { mutableStateOf("") }
     var matricula by rememberSaveable { mutableStateOf("") }
+    var piloto by rememberSaveable { mutableStateOf("") }
     var errorMsg  by remember { mutableStateOf<String?>(null) }
 
     Scaffold(
@@ -126,12 +128,12 @@ fun PantallaAnadirAvion(
                         errorMsg = "Rellena todos los campos"
                         return@Button
                     }
-                    val nuevo = Avion(
-                        id        = 0,
+                    val nuevo = ResponseAvion(
                         nombre    = nombre.trim(),
                         modelo    = modelo.trim(),
                         matricula = matricula.trim()
                     )
+
                     onCreateAvion(nuevo)
                 },
                 modifier = Modifier.fillMaxWidth()
