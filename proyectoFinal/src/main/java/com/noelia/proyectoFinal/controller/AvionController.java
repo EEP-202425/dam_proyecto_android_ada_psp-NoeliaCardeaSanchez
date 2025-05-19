@@ -23,13 +23,11 @@ import com.noelia.proyectoFinal.service.PilotoService;
 @CrossOrigin(origins = "*") // Permite peticiones desde otras apps (como Android)
 public class AvionController {
 
-	private final PilotoService pilotoService;
-    private final AvionService avionService;
+	private final AvionService avionService;
 
     @Autowired
     public AvionController(AvionService avionService,  PilotoService pilotoService) {
         this.avionService = avionService;
-        this.pilotoService = pilotoService;
     }
 
     // Obtener todos los aviones
