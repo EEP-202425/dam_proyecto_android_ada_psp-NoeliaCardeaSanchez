@@ -49,7 +49,7 @@ fun AvionScreen(
         ) { padding ->
             ShowAviones(
                 aviones       = uiState.aviones,
-                onItemClick   = { /* si quisieras detalle */ },
+                onItemClick   = { },
                 modifier      = modifier
                     .fillMaxSize()
                     .padding(padding),
