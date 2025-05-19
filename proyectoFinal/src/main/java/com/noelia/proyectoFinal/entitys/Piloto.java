@@ -33,8 +33,7 @@ public class Piloto {
     @Column(name = "experiencia_anios")
     private int experienciaAnios;
     
- //   @OneToMany(mappedBy = "piloto")     
- //   private List<Avion> aviones = new ArrayList<>();
+
     
     public Piloto() {
     	
