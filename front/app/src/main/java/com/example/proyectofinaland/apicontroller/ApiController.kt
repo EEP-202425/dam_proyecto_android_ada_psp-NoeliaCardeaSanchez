@@ -7,18 +7,22 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Path
 
+object ApiController {
+    private const val BASE_URL = "http://localhost:8080/*"
 
+    private val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 
-private const val BASE_URL =
-    "http://10.0.2.2:8080/"
+    val avionService: AvionService by lazy {
+        retrofit.create(AvionService::class.java)
+    }
 
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(GsonConverterFactory.create())
-    .baseUrl(BASE_URL)
-    .build()
+}
 
 interface AvionService {
     @GET("aviones")
@@ -27,24 +31,4 @@ interface AvionService {
     @POST("aviones")
     suspend fun crearAvion(@Body avion: Avion): Avion
 
-    @PUT("aviones/{id}/piloto")
-    suspend fun asignarPiloto(
-        @Path("id") avionId: Long,
-        @Body body: Map<String, Long>
-    ): Avion
-}
-
-interface PilotoService {
-    @GET("api/pilotos")
-    suspend fun getPilotos(): List<Piloto>
-}
-
-object ApiController{
-    val avionService: AvionService by lazy {
-        retrofit.create(AvionService::class.java)
-    }
-
-    val pilotoService: PilotoService by lazy {
-        retrofit.create(PilotoService::class.java)
-    }
 }
