@@ -9,8 +9,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
+import com.example.proyectofinaland.dto.ResponseAvion
 
-import com.example.proyectofinaland.model.Avion
 import com.example.proyectofinaland.ui.screens.PantallaAnadirAvion
 import com.example.proyectofinaland.ui.screens.ShowAviones
 import com.example.proyectofinaland.viewmodel.AvionViewModel
@@ -51,10 +51,9 @@ fun AppNavGraph(modifier: Modifier = Modifier) {
         // ─────── Ruta de creación ───────
         composable(Screen.Anadir.route) {
             PantallaAnadirAvion(
-                navController   = navController,
-                onCreateAvion   = { avion ->
-                    vm.agregarAvion(avion) {
-                        // una vez creado, recargamos y volvemos atrás
+                navController = navController,
+                onCreateAvion = { avionDto: ResponseAvion ->
+                    vm.agregarAvion(avionDto) {
                         vm.cargarAviones()
                         navController.popBackStack()
                     }

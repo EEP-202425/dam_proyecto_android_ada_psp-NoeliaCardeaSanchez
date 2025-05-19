@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.noelia.proyectoFinal.dto.AvionDto;
 import com.noelia.proyectoFinal.entitys.Avion;
-import com.noelia.proyectoFinal.entitys.Piloto;
 import com.noelia.proyectoFinal.service.AvionService;
 import com.noelia.proyectoFinal.service.PilotoService;
 
@@ -46,11 +46,11 @@ public class AvionController {
 
     // Crear o editar un avión
     @PostMapping
-    public Avion guardar(@RequestBody Avion avion) {
+    public Avion guardar(@RequestBody AvionDto avion) {
     	
-    	Piloto p = pilotoService.buscarPorNombre(avion.getPiloto().getNombre());
+    	//Piloto p = pilotoService.buscarPorNombre(avion.getPiloto().getNombre());
    
-    	Avion avionNuevo = new Avion(null, avion.getNombre(), avion.getMatricula(), avion.getModelo(), p);
+    	Avion avionNuevo = new Avion(null, avion.getNombre(), avion.getMatricula(), avion.getModelo()/*, p*/);
     	
         return avionService.guardar(avionNuevo);
     }
