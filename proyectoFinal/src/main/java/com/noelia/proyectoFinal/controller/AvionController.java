@@ -20,7 +20,7 @@ import com.noelia.proyectoFinal.service.PilotoService;
 
 @RestController
 @RequestMapping("/api/aviones")
-@CrossOrigin(origins = "*") // Permite peticiones desde otras apps (como Android)
+@CrossOrigin(origins = "*") 
 public class AvionController {
 
 	private final AvionService avionService;
@@ -30,30 +30,23 @@ public class AvionController {
         this.avionService = avionService;
     }
 
-    // Obtener todos los aviones
     @GetMapping
     public List<Avion> obtenerTodos() {
         return avionService.obtenerTodos();
     }
 
-    // Obtener un avión por ID
     @GetMapping("/{id}")
     public Optional<Avion> obtenerPorId(@PathVariable Long id) {
         return avionService.obtenerPorId(id);
     }
 
-    // Crear o editar un avión
     @PostMapping
     public Avion guardar(@RequestBody AvionDto avion) {
-    	
-    	//Piloto p = pilotoService.buscarPorNombre(avion.getPiloto().getNombre());
-   
     	Avion avionNuevo = new Avion(null, avion.getNombre(), avion.getMatricula(), avion.getModelo()/*, p*/);
     	
         return avionService.guardar(avionNuevo);
     }
 
-    // Eliminar un avión por ID
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Long id) {
         avionService.eliminar(id);

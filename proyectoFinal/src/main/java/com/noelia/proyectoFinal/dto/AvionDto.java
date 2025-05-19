@@ -1,13 +1,9 @@
 package com.noelia.proyectoFinal.dto;
 
-
-
-
 public class AvionDto {
 
     private String nombre;
     
-
     private String modelo;
 
     private String matricula;
@@ -22,8 +18,6 @@ public class AvionDto {
 		this.modelo = modelo;
 		this.matricula = matricula;
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
@@ -49,9 +43,4 @@ public class AvionDto {
 		this.matricula = matricula;
 	}
 	
-
-
-
-    
-    
 }

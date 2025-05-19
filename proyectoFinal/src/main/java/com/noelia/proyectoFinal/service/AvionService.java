@@ -19,23 +19,18 @@ public class AvionService {
         this.avionRepository = avionRepository;
     }
 
-    // Obtener todos los aviones
     public List<Avion> obtenerTodos() {
         return avionRepository.findAll();
     }
 
-
-    // Buscar avión por ID
     public Optional<Avion> obtenerPorId(Long id) {
         return avionRepository.findById(id);
     }
 
-    // Guardar o actualizar un avión
     public Avion guardar(Avion avion) {
         return avionRepository.save(avion);
     }
 
-    // Eliminar un avión por ID
     public void eliminar(Long id) {
         avionRepository.deleteById(id);
     }
